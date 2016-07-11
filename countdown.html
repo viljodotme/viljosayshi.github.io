@@ -2,42 +2,15 @@
 <head>
 <title>Lunch Hour!</title>
 
-<!-- CSS Imports -->
-<link rel="stylesheet" href="stylesheets/styles.css">
-<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+	<!-- CSS Imports -->
+	<link rel="stylesheet" href="stylesheets/styles.css">
+	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
 
-<!-- Countdown.js -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="countdown.js"></script>
-</head>
-<body>
-<div class="wrapper">
-      <header>
-        <h1>Lunch Countdown</h1>
-        <p>Because, why waste my lunchtime?</p>
-        <p class="view"><a href="http://m4d.xyz">View the main website <small>m4d.xyz</small></a></p>
-        <ul>
-          <li><a href="http://bbc.co.uk/news/">Read <strong>the news</strong></a></li>
-          <li><a href="https://gabrielecirulli.github.io/2048/">Play <strong>2048</strong></a></li>
-          <li><a href="http://viljosayshi.github.io">Code <strong>more stuff</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>The Lunch ountdown</h1>
-
-        <p><em>I got bored, so I used <a href="https://github.com/rendro/countdown"> this countdown</a> to make a counter for my lunch hour!</em></p>
-
-        <p>Also, this is a pretty neat site.</p>
-        <div class='lunch-countdown'></div>
-        <p>
-          <a href="#" class="stop">It can stop...</a> |
-          <a href="#" class="start">...and start!</a>
-        </p>
-
-</section>
-</div>
-<script type="text/javascript">
-    $(function() {
+	<!-- Countdown.js -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="javascripts/jquery.countdown.js"></script>
+    <script type="text/javascript">
+	$(function() {
       $('.lunch-countdown').countdown({
       	date: 'June 11, 2016 14:00:00'
         render: function(data) {
@@ -61,5 +34,33 @@
 
     });
     </script>
+</head>
+
+<body>
+<div class="wrapper">
+      <header>
+        <h1>Lunch Countdown</h1>
+        <p>Because, why waste my lunchtime?</p>
+        <p class="view"><a href="http://m4d.xyz">View the main website <small>m4d.xyz</small></a></p>
+        <ul>
+          <li><a href="http://bbc.co.uk/news/">Read <strong>the news</strong></a></li>
+          <li><a href="https://gabrielecirulli.github.io/2048/">Play <strong>2048</strong></a></li>
+          <li><a href="http://viljosayshi.github.io">Code <strong>more stuff</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>The Lunch Countdown</h1>
+
+        <p><em>I got bored, so I used <a href="https://github.com/rendro/countdown"> this countdown</a> to make a counter for my lunch hour!</em></p>
+
+        <p>Also, this is a pretty neat site.</p>
+        <div class='lunch-countdown'></div>
+        <p>
+          <a href="#" class="stop">It can stop...</a> |
+          <a href="#" class="start">...and start!</a>
+        </p>
+
+</section>
+</div>
 </body>
 </html>
