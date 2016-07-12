@@ -1,0 +1,29 @@
+<doctype html!>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<div class="container">
+		<button class="timer">
+		Click me to make the time appear.
+		</button>
+	</div>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var now = moment().now();
+		var endoflunch = moment('14:00:00','HH:mm:ss')
+		var startoflunch = moment('13:00:00','HH:mm:ss')
+		var appear = $("<p></p>").text('Test.');
+
+		$('.timer').click(function(){
+		  	$('.container').append(appear);
+		});
+	});
+	</script>
+</body>
+</html>
+
