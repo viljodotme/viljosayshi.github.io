@@ -1,95 +1,77 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-	 <!-- Material Design fonts -->
- 	 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
- 	 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
- 	 <!-- Bootstrap -->
- 	 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-  	<!-- Bootstrap Material Design -->
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.1/bootstrap-material-design.css">
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
-</head>
-<body>
-
-<div id="time" class="jumbotron">
-  <h1>The Timer</h1>
-
-  <p>Enter time to start and time to finish, and click start.</p>
-  <div id="timerAppear">
-  </div>
-
-  <form id="thatformthing" name="timings" class="form-horizontal" onsubmit="return validateForm()">
-  <fieldset>
-    <legend>Enter Timings</legend>
-    <div class="form-group">
-      <label for="textArea" class="col-md-2 control-label">Running Time</label>
-
-      <div class="col-md-10">
-        <input class="form-control" pattern="\d\d:\d\d:\d\d" rows="1" id="endTime" required></input>
-        <span class="help-block">Enter the end time in the format 00:00:00</span>
+   <head>
+      <title></title>
+      <!-- Material Design fonts -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <!-- Bootstrap -->
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <!-- Bootstrap Material Design -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.1/bootstrap-material-design.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+   </head>
+   <body>
+      <div id="time" class="jumbotron">
+         <h1>The Timer</h1>
+         <p>Enter time to start and time to finish, and click start.</p>
+         <div id="timerAppear">
+         </div>
+         <form id="thatformthing" name="timings" class="form-horizontal" onsubmit="return runTimer()">
+            <fieldset>
+               <legend>Enter Timings</legend>
+               <div class="form-group">
+                  <label for="textArea" class="col-md-2 control-label">Running Time</label>
+                  <div class="col-md-10">
+                     <input class="form-control" pattern="\d\d:\d\d:\d\d" rows="1" id="endTime" required></input>
+                     <span class="help-block">Enter the end time in the format 00:00:00</span>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-md-10 col-md-offset-2">
+                     <button id="start" class="btn btn-primary">Start Timer</button>
+                  </div>
+               </div>
+            </fieldset>
+         </form>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-md-10 col-md-offset-2">
-        <button id="start" class="btn btn-primary">Start Timer</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
-</div>
-
-	<script type="text/javascript">
-	function validateForm() {
-    	var endTime = document.forms["timings"]["endTime"].value;
-    	if (endTime == null || endTime == "") {
-    		alert("You must enter a running time.");
-     	   return false;
-    	}
-    	console.log("yep.")
-    	runTimer();
-    }
-    function runTimer() {
-    	$('#thatformthing').hide();
-    	var now = moment.now();
-		  var end = moment(endTime,'HH:mm:ss');
-  	 	var timeRemaining = '';
-	 	  var tempTime = moment.duration(timeRemaining);
-	   	var hours = tempTime.hours();
-	  	var minutes = tempTime.minutes();
-	  	var seconds = tempTime.seconds();
-	  	var over = '<div id="over" class="alert alert-dismissible alert-warning">     <p>The timer has finished!</p></div>';
-	  	var remaining = $("<h2 class='remaining'></h2>").text('Time remaining:');
-	  	var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
-		  var loop = setInterval(function(){
-		  	$('.remaining').remove();
-			  $('.time').remove();
-			  $('#over').remove();
-			  now = moment.now();
-			  tempTime = moment.duration(timeRemaining);
-			  hours = tempTime.hours();
-			  minutes = tempTime.minutes();
-			  seconds = tempTime.seconds();
-	  		if (now < end){
-          console.log("hello");
-		  		time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
-			  	timeRemaining = end - now;
-		  	  	$('#timerAppear').append(remaining, time);
-			  }
-			  else if (now > end) {
-          console.log("else");
-				  $('#timerAppear').append(over);
-				  clearInterval(loop);
-			  }
-		  }, 1000);
-		  loop();
-    };
-	</script>
-</body>
+      <script type="text/javascript">
+        function runTimer() {
+            $('#thatformthing').hide();
+            var now = moment.now();
+            var end = moment(endTime, 'HH:mm:ss');
+            var timeRemaining = '';
+            var tempTime = moment.duration(timeRemaining);
+            var hours = tempTime.hours();
+            var minutes = tempTime.minutes();
+            var seconds = tempTime.seconds();
+            var over = '<div id="over" class="alert alert-dismissible alert-warning">     <p>The timer has finished!</p></div>';
+            var remaining = $("<h2 class='remaining'></h2>").text('Time remaining:');
+            var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
+            var loop = setInterval(function() {
+                $('.remaining').remove();
+                $('.time').remove();
+                $('#over').remove();
+                now = moment.now();
+                tempTime = moment.duration(timeRemaining);
+                hours = tempTime.hours();
+                minutes = tempTime.minutes();
+                seconds = tempTime.seconds();
+                if (now < end) {
+                    console.log("hello");
+                    time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
+                    timeRemaining = end - now;
+                    $('#timerAppear').append(remaining, time);
+                } else if (now > end) {
+                    console.log("else");
+                    $('#timerAppear').append(over);
+                    clearInterval(loop);
+                }
+            }, 1000);
+            loop();
+        };
+      </script>
+   </body>
 </html>
-
+<!-- Hello, we haven't talked in quite some time. I know, I haven't been the best... -->
