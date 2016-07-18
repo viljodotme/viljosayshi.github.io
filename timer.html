@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,15 +28,7 @@
   <fieldset>
     <legend>Enter Timings</legend>
     <div class="form-group">
-      <label for="textArea" class="col-md-2 control-label">Start Time</label>
-
-      <div class="col-md-10">
-        <input class="form-control" pattern="\d\d:\d\d:\d\d" rows="1" id="startTime" required></input>
-        <span class="help-block">Enter the start time in the format 00:00:00</span>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="textArea" class="col-md-2 control-label">End Time</label>
+      <label for="textArea" class="col-md-2 control-label">Running Time</label>
 
       <div class="col-md-10">
         <input class="form-control" pattern="\d\d:\d\d:\d\d" rows="1" id="endTime" required></input>
@@ -53,18 +46,9 @@
 
 	<script type="text/javascript">
 	function validateForm() {
-    	var startTime = document.forms["timings"]["startTime"].value;
     	var endTime = document.forms["timings"]["endTime"].value;
-    	if ((startTime == null || startTime == "") && (endTime == null || endTime == "")) {
-    		alert("You must enter a start time and an end time.");
-    		return false;
-    	}
-    	if (startTime == null || startTime == "") {
-     	   alert("You must enter a start time.");
-     	   return false;
-    	}
-    	else if (endTime == null || endTime == "") {
-    		alert("You must enter an end time.");
+    	if (endTime == null || endTime == "") {
+    		alert("You must enter a running time.");
      	   return false;
     	}
     	console.log("yep.")
@@ -73,36 +57,35 @@
     function runTimer() {
     	$('#thatformthing').hide();
     	var now = moment.now();
-		var start = moment(startTime,'HH:mm:ss');
-		var end = moment(endTime,'HH:mm:ss');
-		var timeRemaining = '';
-		var tempTime = moment.duration(timeRemaining);
-		var hours = tempTime.hours();
-		var minutes = tempTime.minutes();
-		var seconds = tempTime.seconds();
-		var over = '<div id="over" class="alert alert-dismissible alert-warning">     <p>The timer has finished!</p></div>';
-		var remaining = $("<h2 class='remaining'></h2>").text('Time remaining:');
-		var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
-		loop = setInterval(function(){
-			$('.remaining').remove();
-			$('.time').remove();
-			$('#over').remove();
-			now = moment.now();
-			tempTime = moment.duration(timeRemaining);
-			hours = tempTime.hours();
-			minutes = tempTime.minutes();
-			seconds = tempTime.seconds();
-			if (now > end){
-				time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
-				timeRemaining = end - now;
-		  		$('#timerAppear').append(remaining, time);
-			}
-			else if (now > end) {
-				$('#timerAppear').append(over);
-				clearInterval(loop);
-			}
-		}, 1000);
-		loop;
+		  var end = moment(endTime,'HH:mm:ss');
+  	 	var timeRemaining = '';
+	 	  var tempTime = moment.duration(timeRemaining);
+	   	var hours = tempTime.hours();
+	  	var minutes = tempTime.minutes();
+	  	var seconds = tempTime.seconds();
+	  	var over = '<div id="over" class="alert alert-dismissible alert-warning">     <p>The timer has finished!</p></div>';
+	  	var remaining = $("<h2 class='remaining'></h2>").text('Time remaining:');
+	  	var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
+		  loop = setInterval(function(){
+		  	$('.remaining').remove();
+			  $('.time').remove();
+			  $('#over').remove();
+			  now = moment.now();
+			  tempTime = moment.duration(timeRemaining);
+			  hours = tempTime.hours();
+			  minutes = tempTime.minutes();
+			  seconds = tempTime.seconds();
+	  		if (now < end){
+		  		time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
+			  	timeRemaining = end - now;
+		  	  	$('#timerAppear').append(remaining, time);
+			  }
+			  else if (now > end) {
+				  $('#timerAppear').append(over);
+				  clearInterval(loop);
+			  }
+		  }, 1000);
+		  loop;
     };
 	</script>
 </body>
