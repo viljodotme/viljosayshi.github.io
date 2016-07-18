@@ -76,16 +76,18 @@
 			  minutes = tempTime.minutes();
 			  seconds = tempTime.seconds();
 	  		if (now < end){
+          console.log("hello");
 		  		time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
 			  	timeRemaining = end - now;
 		  	  	$('#timerAppear').append(remaining, time);
 			  }
 			  else if (now > end) {
+          console.log("else");
 				  $('#timerAppear').append(over);
 				  clearInterval(loop);
 			  }
 		  }, 1000);
-		  loop;
+		  loop();
     };
 	</script>
 </body>
