@@ -66,7 +66,7 @@
 	  	var over = '<div id="over" class="alert alert-dismissible alert-warning">     <p>The timer has finished!</p></div>';
 	  	var remaining = $("<h2 class='remaining'></h2>").text('Time remaining:');
 	  	var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
-		  loop = setInterval(function(){
+		  var loop = setInterval(function(){
 		  	$('.remaining').remove();
 			  $('.time').remove();
 			  $('#over').remove();
