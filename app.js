@@ -1,7 +1,14 @@
 var timer = true;
 var over = '<div id="over" class="alert alert-dismissible alert-warning">     <p>The timer has finished!</p></div>';
 var remaining = $("<h4 class='remaining'></h4>").text('Remaining Time');
-
+var now;
+var end;
+var timeRemaining = '';
+var tempTime;
+var hours;
+var minutes;
+var seconds;
+var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
 var loop;
 
 $('#thatformthing').on('submit', function () {
@@ -25,43 +32,45 @@ $('#reset').click(function () {
   $('.time').remove();
   $('#over').remove();
   $('#form').show(1000);
+  $('input').val('');
   console.log('Reset the form.');
 });
 
 function runTimer() {
     timer = false;
     endTime = document.querySelector('#endTime').value;
-    var re = new RegExp ()
+    var re = new RegExp ("\\d\\d:\\d\\d:\\d\\d","g");
     if (endTime == null || endTime == '') {
       alert('You must fill in all fields!');
       console.log('No blank fields!');
       return false;
-    }
-    $('#form').hide(1000);  
-    var now = moment.now();
-    var end = moment(endTime, 'HH:mm:ss');
-    var timeRemaining = '';
-    var tempTime = moment.duration(timeRemaining);
-    var hours = tempTime.hours();
-    var minutes = tempTime.minutes();
-    var seconds = tempTime.seconds();
-    var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
-    loop = setInterval(function() {
-        $('.remaining').remove();
-        $('.time').remove();
-        $('#over').remove();
-        now = moment.now();
-        tempTime = moment.duration(timeRemaining);
-        hours = tempTime.hours();
-        minutes = tempTime.minutes();
-        seconds = tempTime.seconds();
-        if (now < end) {
-            time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
-            timeRemaining = end - now;
-            $('#text').append(remaining, time);
-        } else if (now > end) {
-            $('#text').append(over);
-            clearInterval(loop);
-        }
-    }, 1000);
+    };
+    if (re.test(endTime) == false){
+      alert('You must match the format!');
+      console.log('Format didn\'t match.');
+      $('input').val('');
+      return false;
+    };
+    $('#form').hide(1000);
+    loop = setInterval(timerFunction, 1000);
+};
+
+function timerFunction() {
+  $('.remaining').remove();
+  $('.time').remove();
+  $('#over').remove();
+  now = moment.now();
+  end = moment(endTime, 'HH:mm:ss');
+  tempTime = moment.duration(timeRemaining);
+  hours = tempTime.hours();
+  minutes = tempTime.minutes();
+  seconds = tempTime.seconds();
+  if (now < end) {
+      time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
+      timeRemaining = end - now;
+      $('#text').append(remaining, time);
+  } else if (now > end) {
+      $('#text').append(over);
+      clearInterval(loop);
+  }
 };
