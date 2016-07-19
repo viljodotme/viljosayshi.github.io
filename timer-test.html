@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cover Template for Bootstrap</title>
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.1/bootstrap-material-design.css">
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.1/bootstrap-material-design.es.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+
+    <!-- Custom Script -->
+    <script type="text/javascript" src="app.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Cover</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1>The Timer</h1>
+              <p id="text">Enter the end time, and hit 'Start Timer'.</p>
+              <div id="form">
+               <h4>End Time</h4>
+                 <div class="form-group">
+                  <input type="text" pattern="\d\d:\d\d:\d\d" placeholder="00:00:00" class="form-control" id="endTime" type="text">
+                  <p class="help-block">This should be the time you want the timer to end! Enter it in the format 00:00:00</p>
+                 </div>
+              </div>
+             <button id="start" class="btn btn-success btn-raised">START</button>
+             <button id="reset" class="btn btn-danger btn-raised">RESET</button>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Timer by <a href="https://viljosayshi.github.io">viljosayshi</a></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>
