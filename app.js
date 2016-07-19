@@ -11,6 +11,14 @@ var seconds;
 var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
 var loop;
 
+var endSound = new Howl({
+  urls: ['alarm.mp3'],
+  loop: true,
+  onloaderror: function() {
+    alert('An error occured trying to sound the timer alarm!');
+  }
+});
+
 $('#thatformthing').on('submit', function () {
     runTimer();
  });
@@ -72,5 +80,6 @@ function timerFunction() {
   } else if (now > end) {
       $('#text').append(over);
       clearInterval(loop);
+      endSound.play();
   }
 };
