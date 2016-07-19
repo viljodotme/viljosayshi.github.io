@@ -36,6 +36,7 @@ $('#reset').click(function () {
     console.log("The timer has not been created yet!");
     return false;
   }
+  endSound.stop();
   $('.remaining').remove();
   $('.time').remove();
   $('#over').remove();
@@ -45,6 +46,10 @@ $('#reset').click(function () {
 });
 
 function runTimer() {
+  if (timer == false) {
+    console.log('An instance of the timer is already running!');
+    return false;
+  }
     timer = false;
     endTime = document.querySelector('#endTime').value;
     var re = new RegExp ("\\d\\d:\\d\\d:\\d\\d","g");
