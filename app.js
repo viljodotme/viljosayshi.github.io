@@ -24,6 +24,10 @@ $('#thatformthing').on('submit', function () {
  });
 
 $('#start').click(function (){
+  if (timer == false) {
+    alert('An instance of the timer is already running!');
+    return false;
+  }
   runTimer();
 });
 
@@ -36,6 +40,7 @@ $('#reset').click(function () {
     return false;
   }
   endSound.stop();
+  timer = true;
   $('.remaining').remove();
   $('.time').remove();
   $('#over').remove();
@@ -45,10 +50,6 @@ $('#reset').click(function () {
 });
 
 function runTimer() {
-  if (timer == false) {
-    alert('An instance of the timer is already running!');
-    return false;
-  }
     timer = false;
     endTime = document.querySelector('#endTime').value;
     var re = new RegExp ("\\d\\d:\\d\\d:\\d\\d","g");
