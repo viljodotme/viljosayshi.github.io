@@ -24,7 +24,6 @@ $('#thatformthing').on('submit', function () {
  });
 
 $('#start').click(function (){
-  console.log('Clicked start, running timer.');
   runTimer();
 });
 
@@ -33,7 +32,7 @@ $('#reset').click(function () {
     clearInterval(loop);
   }
   else {
-    console.log("The timer has not been created yet!");
+    alert("The timer is not running!");
     return false;
   }
   endSound.stop();
@@ -47,7 +46,7 @@ $('#reset').click(function () {
 
 function runTimer() {
   if (timer == false) {
-    console.log('An instance of the timer is already running!');
+    alert('An instance of the timer is already running!');
     return false;
   }
     timer = false;
@@ -55,12 +54,11 @@ function runTimer() {
     var re = new RegExp ("\\d\\d:\\d\\d:\\d\\d","g");
     if (endTime == null || endTime == '') {
       alert('You must fill in all fields!');
-      console.log('No blank fields!');
       return false;
     };
     if (re.test(endTime) == false){
       alert('You must match the format!');
-      console.log('Format didn\'t match.');
+
       $('input').val('');
       return false;
     };
