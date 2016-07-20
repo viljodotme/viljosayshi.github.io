@@ -50,7 +50,6 @@ $('#reset').click(function () {
 });
 
 function runTimer() {
-    timer = false;
     endTime = document.querySelector('#endTime').value;
     var re = new RegExp ("\\d\\d:\\d\\d:\\d\\d","g");
     if (endTime == null || endTime == '') {
@@ -63,6 +62,7 @@ function runTimer() {
       $('input').val('');
       return false;
     };
+    timer = false;
     $('#form').hide(1000);
     loop = setInterval(timerFunction, 1000);
 };
