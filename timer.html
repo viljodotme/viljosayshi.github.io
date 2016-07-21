@@ -20,12 +20,16 @@
       <!-- DateTime Picker! -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/css/bootstrap-material-datetimepicker.min.css">
 
+      <!-- Modal CSS -->
+      <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.7.0/jquery.modal.min.css">
+
       <!-- JavaScript -->
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
       <script type="text/javascript" src="material.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/js/bootstrap-material-datetimepicker.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.29/howler.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.7.0/jquery.modal.min.js"></script>
    </head>
    <body>
       <div class="jumbotron">
@@ -40,23 +44,26 @@
         <div>
           <button id="start" class="btn btn-success btn-raised" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Press this to start the timer!"><i class="material-icons">done</i><br>START</button>
           <button id="reset" class="btn btn-danger btn-raised"data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Press this to reset the timer!"><i class="material-icons">not_interested</i><br>RESET</button>
+          <button class="btn btn-info btn-raised" onclick="raiseError('000', 'This is a test!')">Open Modal</button>
         </div>
       </div>
-      <div id="complete-dialog" class="modal fade" tabindex="-1">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title">Error</h4>
-	      </div>
-	      <div class="modal-body">
-	        <p>An instance of the timer is already running!</p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
-	      </div>
-	    </div>
-	  </div>
+
+      <!-- This is the modal-->
+      <div id="error" class="modal" style="display: none;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Error <span class="text-info" id="error-id">ID</span>.</h4>
+            </div>
+            <div class="modal-body">
+              <p class="text-danger" id="error-body">Error body</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#error" class="btn btn-danger btn-raised" rel="modal:close">Dismiss</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <script type="text/javascript" src="app.js"></script>
       <script>
