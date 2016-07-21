@@ -1,6 +1,6 @@
 var timer = true;
 var over = '<div id="over" class="alert alert-dismissible alert-warning">     <p>The timer has finished!</p></div>';
-var remaining = $("<h4 class='remaining'></h4>").text('Remaining Time');
+var remaining = "<h4 class='remaining'>Remaining Time </h4>";
 var now;
 var end;
 var timeRemaining = '';
@@ -8,7 +8,7 @@ var tempTime;
 var hours;
 var minutes;
 var seconds;
-var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
+var time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds </div>';
 var loop;
 
 var endSound = new Howl({
@@ -41,6 +41,7 @@ $('#reset').click(function () {
   }
   endSound.stop();
   timer = true;
+  $('#remaining').remove();
   $('.remaining').remove();
   $('.time').remove();
   $('#over').remove();
@@ -90,9 +91,10 @@ function timerFunction() {
   minutes = tempTime.minutes();
   seconds = tempTime.seconds();
   if (now < end) {
-      time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds';
+      time = '<p class="time"><b>' + hours + '</b> Hours, <b>' + minutes + '</b> Minutes, <b>' + seconds + '</b> Seconds </div>';
+      toAppend = remaining + time;
       timeRemaining = end - now;
-      $('#text').append(remaining, time);
+      $('#text').append(toAppend);
   } else if (now > end) {
       $('#text').append(over);
       clearInterval(loop);
