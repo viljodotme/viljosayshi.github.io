@@ -15,7 +15,7 @@ var endSound = new Howl({
   urls: ['alarm.mp3'],
   loop: true,
   onloaderror: function() {
-    raiseError('4eZBGoTb', 'An error occured trying to sound the timer alarm!');
+    alert('An error occured trying to sound the timer alarm!');
   }
 });
 
@@ -25,7 +25,7 @@ $('#thatformthing').on('submit', function () {
 
 $('#start').click(function (){
   if (timer == false) {
-    raiseError('DdKwfCaZ', 'An instance of the timer is already running!');
+    alert('An instance of the timer is already running!');
     return false;
   }
   runTimer();
@@ -36,7 +36,7 @@ $('#reset').click(function () {
     clearInterval(loop);
   }
   else {
-    raiseError('3Tpl1z5a', "The timer is not running!");
+    alert("The timer is not running!");
     return false;
   }
   endSound.stop();
@@ -53,11 +53,11 @@ function runTimer() {
     endTime = document.querySelector('#endTime').value;
     var re = new RegExp ("\\d\\d:\\d\\d:\\d\\d","g");
     if (endTime == null || endTime == '') {
-      raiseError('TcLO8hJ1', 'You must fill in all fields!');
+      alert('You must fill in all fields!');
       return false;
     };
     if (re.test(endTime) == false){
-      raiseError('xZh2TfJ3', 'You must match the format!');
+      alert('You must match the format!');
 
       $('input').val('');
       return false;
@@ -65,19 +65,6 @@ function runTimer() {
     timer = false;
     $('#form').hide(1000);
     loop = setInterval(timerFunction, 1000);
-};
-
-function raiseError(errorID, errorText) {
-  console.log("An error occured\n" + errorID + ": " + errorText);
-  $('#error-id').text(errorID);
-  $('#error-body').text(errorText);
-  $('#error').modal({
-    fadeDuration: 350,
-    fadeDelay: 0,
-    escapeClose: true,
-    clickClose: false,
-    showClose: false
-  });
 };
 
 function timerFunction() {
