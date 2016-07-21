@@ -15,7 +15,7 @@ var endSound = new Howl({
   urls: ['alarm.mp3'],
   loop: true,
   onloaderror: function() {
-    raiseError('4eZBGoTb', 'An error occured trying to sound the timer alarm!');
+    raiseError('4eZBGoTb', 'Oh no, an error occured while trying to play the alarm. The timer has finished, though.');
   }
 });
 
@@ -25,7 +25,7 @@ $('#thatformthing').on('submit', function () {
 
 $('#start').click(function (){
   if (timer == false) {
-    raiseError('DdKwfCaZ', 'An instance of the timer is already running!');
+    raiseError('DdKwfCaZ', 'You can\'t start the timer twice, silly. It\'s already running.');
     return false;
   }
   runTimer();
@@ -36,7 +36,7 @@ $('#reset').click(function () {
     clearInterval(loop);
   }
   else {
-    raiseError('3Tpl1z5a', "The timer is not running!");
+    raiseError('3Tpl1z5a', "The timer isn't running yet, how can you reset it if it's not already running?");
     return false;
   }
   endSound.stop();
@@ -45,19 +45,18 @@ $('#reset').click(function () {
   $('.time').remove();
   $('#over').remove();
   $('#form').show(1000);
-  $('input').val('');
-  console.log('Reset the form.');
+  $('input').val(''); 
 });
 
 function runTimer() {
     endTime = document.querySelector('#endTime').value;
-    var re = new RegExp ("\\d\\d:\\d\\d:\\d\\d","g");
+    var re = new RegExp ("\\d\\d:\\d\\d","g");
     if (endTime == null || endTime == '') {
-      raiseError('TcLO8hJ1', 'You must fill in all fields!');
+      raiseError('TcLO8hJ1', 'Hey buddy, can you make sure to enter a time? I can\'t read minds...');
       return false;
     };
     if (re.test(endTime) == false){
-      raiseError('xZh2TfJ3', 'You must match the format!');
+      raiseError('xZh2TfJ3', 'The format for the timer isn\'t being matched, oh dear. This is a code error, please report it.');
 
       $('input').val('');
       return false;

@@ -37,8 +37,8 @@
          <p id="text">Enter the end time, and hit <span class="text-info">'Start Timer'</span>.</p>
          <div id="form">
            <h4><i class="material-icons">timer</i> End Time</h4>
-           <div class="form-group">
-              <input type="text" pattern="\d\d:\d\d:\d\d" placeholder="00:00:00" class="form-control" id="endTime" type="text" style="width: 100px; ">
+           <div class="form-group label-floating">
+              <input type="text" pattern="\d\d:\d\d" placeholder="00:00" class="form-control" id="endTime" type="text" style="width: 100px; ">
           </div>
         </div>
         <div>
@@ -52,7 +52,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Error <span class="text-info" id="error-id">ID</span>.</h4>
+              <h4 class="modal-title">Error <span id="error-id">ID</span></h4>
             </div>
             <div class="modal-body">
               <p class="text-danger" id="error-body">Error body</p>
@@ -67,7 +67,7 @@
       <script type="text/javascript" src="app.js"></script>
       <script>
       $.material.init()
-      $('#endTime').bootstrapMaterialDatePicker({ date: false, format: 'HH:mm:ss' });
+      $('#endTime').bootstrapMaterialDatePicker({ date: false, format: 'HH:mm' });
       </script>
    </body>
 </html>
