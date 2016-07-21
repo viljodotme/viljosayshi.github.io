@@ -80,6 +80,10 @@ function raiseError(errorID, errorText) {
   });
 };
 
+cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
+  raiseError('Konami Code','I\'m a sucker for easter eggs. Well, here you go');
+});
+
 function timerFunction() {
   $('.remaining').remove();
   $('.time').remove();
