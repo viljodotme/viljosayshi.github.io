@@ -15,4 +15,12 @@ cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
 
 cheet('m i n e m a n', function(){
   window.location = 'https://xor.li/a34049d1';
-})
+});
+
+cheet('s h u f f l e r', function(){
+  window.location = 'https://shuffler.pw';
+});
+
+cheet('m 4 d', function(){
+  window.location = 'https://www.minemart.org/members/653/';
+});
