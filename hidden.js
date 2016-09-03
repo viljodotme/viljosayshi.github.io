@@ -24,3 +24,11 @@ cheet('s h u f f l e r', function(){
 cheet('m 4 d', function(){
   window.location = 'https://www.minemart.org/members/653/';
 });
+
+cheet('a r c', function(){
+  window.location = 'https://www.minemart.org/members/1/';
+});
+
+cheet('x e r u', function(){
+  window.location = 'https://www.minemart.org/members/3859/';
+});
