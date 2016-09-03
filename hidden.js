@@ -12,3 +12,7 @@ function easterEgg() {
 cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
   easterEgg();
 });
+
+cheet('m i n e m a n', function(){
+  window.location = 'https://xor.li/a34049d1';
+})
