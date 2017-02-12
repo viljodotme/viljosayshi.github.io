@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MineMart | Access Denied">
-    <meta name="author" content="m4d">
-      <title>MineMart | Access Denied</title>
+    <meta name="description" content="A timer by viljosayshi">
+    <meta name="author" content="viljosayshi">
+      <title>Timer</title>
       <!-- Material Design fonts -->
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
       <!-- Bootstrap -->
       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -16,26 +17,46 @@
       <!-- Bootstrap Material Design -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.1/bootstrap-material-design.css">
 
+      <!-- DateTime Picker! -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/css/bootstrap-material-datetimepicker.min.css">
+
+      <!-- Modal CSS -->
+      <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.7.0/jquery.modal.min.css">
+
       <!-- JavaScript -->
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
       <script type="texst/javascript" src="material.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/js/bootstrap-material-datetimepicker.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.29/howler.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.7.0/jquery.modal.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cheet.js/0.3.3/cheet.min.js"></script>
    </head>
    <body>
       <div class="jumbotron">
-         <h1 class="text-danger">MineMart</h1>
-         <p id="text">Hey buddy, you're not allowed to be here! Go back to <a href="https://minemart.org/" class="text-danger">the forums</a>.</p>
+         <h1>The Timer</h1>
+         <p id="text">Enter the end time, and hit <span class="text-info">'Start Timer'</span>.</p>
+         <div id="form">
+           <h4><i class="material-icons">timer</i> End Time</h4>
+           <div class="form-group label-floating">
+              <input type="text" pattern="\d\d:\d\d" placeholder="00:00" class="form-control" id="endTime" type="text" style="width: 100px; ">
+          </div>
+        </div>
+        <div>
+          <button id="start" class="btn btn-success btn-raised" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Press this to start the timer!"><i class="material-icons">done</i><br>START</button>
+          <button id="reset" class="btn btn-danger btn-raised"data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Press this to reset the timer!"><i class="material-icons">not_interested</i><br>RESET</button>
+        </div>
+      </div>
 
       <!-- This is the modal-->
-      <div id="egg" class="modal" style="display: none;">
+      <div id="error" class="modal" style="display: none;">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title"><b><span class="text-danger" id="error-id">MineMan</span> Easter Egg!</b></h4>
+              <h4 class="modal-title">Error <b><span class="text-danger" id="error-id">ID</span></b></h4>
             </div>
             <div class="modal-body">
-              <p>Well done, you found the hidden easter egg! Now, off with you! <a href="https://minemart.org" class="text-danger">Get back to the site</a>.</p>
+              <p class="text-danger" id="error-body">Error body</p>
             </div>
             <div class="modal-footer">
               <a href="#error" class="btn btn-danger btn-raised" rel="modal:close">Dismiss</a>
@@ -44,9 +65,10 @@
         </div>
       </div>
 
-      <script type="text/javascript" src="hidden.js"></script>
+      <script type="text/javascript" src="app.js"></script>
       <script>
       $.material.init()
+      $('#endTime').bootstrapMaterialDatePicker({ date: false, format: 'HH:mm' });
       </script>
    </body>
 </html>
